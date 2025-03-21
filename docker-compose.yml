@@ -1,0 +1,12 @@
+version: '3'
+services:
+  nodo-player:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./public/music:/usr/share/nginx/html/music
+    restart: unless-stopped 
