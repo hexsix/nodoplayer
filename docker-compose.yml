@@ -1,10 +1,6 @@
-version: '3'
 services:
-  nodo-player:
-    platform: linux/amd64
-    build:
-      context: .
-      dockerfile: Dockerfile
+  nodoplayer:
+    image: nodoplayer:latest
     ports:
       - "8080:80"
     volumes:

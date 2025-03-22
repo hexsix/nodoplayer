@@ -102,6 +102,5 @@ docker run -d -p 8080:80 -v $(pwd)/music:/usr/share/nginx/html/music --name nodo
 
 - Vue.js 3
 - Howler.js (音频处理)
-- Color Thief (提取图像主题色)
 - Docker (容器化)
 - Nginx (生产环境服务)
