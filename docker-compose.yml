@@ -1,6 +1,6 @@
 services:
   nodoplayer:
-    image: nodoplayer:latest
+    image: hexsix/nodoplayer:latest
     ports:
       - "8080:80"
     volumes:

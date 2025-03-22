@@ -96,6 +96,7 @@ const loadSound = (track) => {
     onplay: () => {
       isPlaying.value = true
       requestAnimationFrame(updateProgress)
+      updateDocumentTitle()
     },
     onpause: () => {
       isPlaying.value = false
@@ -106,6 +107,7 @@ const loadSound = (track) => {
     },
     onload: () => {
       duration.value = sound.value.duration()
+      updateDocumentTitle()
     },
     onloaderror: (id, err) => {
       console.error('音频加载失败:', err)
@@ -119,6 +121,15 @@ const loadSound = (track) => {
   } else {
     // 如果没有封面，使用随机颜色
     useRandomColor()
+  }
+}
+
+// 更新文档标题
+const updateDocumentTitle = () => {
+  if (currentTrack.value) {
+    document.title = `${currentTrack.value.name} - ${currentTrack.value.artist}`
+  } else {
+    document.title = '音乐播放器'
   }
 }
 
@@ -288,6 +299,7 @@ const handleKeyDown = (e) => {
 onMounted(() => {
   fetchMusicData()
   window.addEventListener('keydown', handleKeyDown)
+  updateDocumentTitle()
 })
 
 // 组件卸载时移除事件监听
@@ -303,12 +315,7 @@ onUnmounted(() => {
     :style="!loading && !error && currentTrack ? backgroundStyle : {}"
   >
     <header class="player-header">
-      <div class="header-controls">
-        <button @click="toggleFullScreen" class="icon-btn">
-          <span v-if="isFullScreen">退出全屏</span>
-          <span v-else>全屏模式</span>
-        </button>
-      </div>
+      <!-- 移除了退出全屏按钮 -->
     </header>
     
     <div v-if="loading" class="loading">
