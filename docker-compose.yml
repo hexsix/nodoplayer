@@ -8,5 +8,5 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./public/music:/usr/share/nginx/html/music
+      - ./music:/usr/share/nginx/html/music
     restart: unless-stopped 
